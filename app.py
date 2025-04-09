@@ -14,7 +14,7 @@ def main(page: ft.Page):
     content=ft.Column(
         alignment=ft.MainAxisAlignment.START,  # Alinha os filhos no topo (vertical)
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,  # Centraliza filhos (horizontal)
-        spacing=10,
+        spacing=30,
     )
 )
     
@@ -23,7 +23,7 @@ def main(page: ft.Page):
         height=100,
         content=ft.Row(
             alignment=ft.MainAxisAlignment.CENTER,
-            spacing=10,
+            spacing=30,
         )
     )
     
@@ -31,7 +31,7 @@ def main(page: ft.Page):
         bgcolor='white',
         border_color='white',
         border_radius=10,
-        width=290,
+        width=250,
         hint_text='digite sua cidade',
         hint_style=ft.TextStyle(size=14, color='#778899'),
         text_align=ft.TextAlign.CENTER,
@@ -49,7 +49,7 @@ def main(page: ft.Page):
     content=ft.Column(
         alignment=ft.MainAxisAlignment.CENTER,
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-        spacing=10,
+        spacing=30,
     )
 )
     
@@ -102,14 +102,66 @@ def main(page: ft.Page):
         ]
     )
     
+    #################containerInferior#################################
+    cntInferior = ft.Container(
+    height=150,
+    width=220,  # Largura fixa (opcional)
+    alignment=ft.alignment.center,  # Centraliza o conteúdo interno
+    content=ft.Column(
+        alignment=ft.MainAxisAlignment.CENTER,
+        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+        spacing=10,
+    )
+)
+    
+    cntInferiorLinha1 = ft.Row(
+        alignment=ft.MainAxisAlignment.SPACE_AROUND,
+        controls=[
+            ft.Text(
+                f"D {i}   ",
+                color="white",
+                
+            )for i in range(1,6)
+                
+           
+        ]
+        
+    )
+    cntInferiorLinha2 = ft.Row(
+        alignment=ft.MainAxisAlignment.CENTER,
+        controls=[
+            ft.Image(
+                src="sol.png",
+                width=40,
+                height=40,
+                
+            )for i in range(1,6)
+        ]
+    )
+    cntInferiorLinha3 = ft.Row(
+        alignment=ft.MainAxisAlignment.CENTER,
+       controls=[
+            ft.Text(
+                f"T  { i }  ",
+                color="white",
+                
+            )for i in range(1,6)
+                
+           
+        ]
+    )
+    
+    
     # Adiciona as linhas ao cntCentral
     cntCentral.content.controls.extend([cntCentralLinha1, cntCentralLinha2, cntCentralLinha3,cntCentralLinha4])
+    #adiciona linhas ao cntiNFERIOR
+    cntInferior.content.controls.extend([cntInferiorLinha1,cntInferiorLinha2,cntInferiorLinha3])
     
     # Adiciona os controles ao cntSuperior
     cntSuperior.content.controls.extend([pesqLocal, btnPesquisar])
     
     # Adiciona cntSuperior e cntCentral ao cntPrincipal
-    cntPrincipal.content.controls.extend([cntSuperior, cntCentral])
+    cntPrincipal.content.controls.extend([cntSuperior, cntCentral,cntInferior])
     
     # Adiciona cntPrincipal à página
     page.add(cntPrincipal)
